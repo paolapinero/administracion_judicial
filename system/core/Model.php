@@ -77,4 +77,13 @@ class CI_Model {
 		return get_instance()->$key;
 	}
 
+	public function buscar_modelo($tabla, $conditions = null) {
+        if (!empty($conditions)) {
+            $this->db->where($conditions);
+        }  
+        $this->db->from($tabla);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 }
